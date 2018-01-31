@@ -1,0 +1,10 @@
+<h1> Welcome to My Recipe Journal! </h1>
+<ul>
+    <li>Check out these Popular Recipes</li>
+    <li>Check out these Popular Ingredients</li>
+    </ul>
+    
+    <%= render partial: "layouts/navbar" %>
+    <% if user_signed_in? %>
+    <li><%= link_to "See My Recipes", recipes_path %></li>
+    <%end%>
