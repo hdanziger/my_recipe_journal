@@ -1,10 +1,6 @@
-<h1> Welcome to My Recipe Journal! </h1>
-<ul>
-    <li>Check out these Popular Recipes</li>
-    <li>Check out these Popular Ingredients</li>
-    </ul>
+<h1> Welcome My Recipe journal! </h1>
     
-    <%= render partial: "layouts/navbar" %>
-    <% if user_signed_in? %>
-    <li><%= link_to "See My Recipes", recipes_path %></li>
-    <%end%>
+    <%= render partial: "layouts/sign_in" %>
+    <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
+    
+   

@@ -9,9 +9,8 @@ User.create(
     email: "hannah@email.com",
     password: "123456")
 
-
 Recipe.create(
-    title: "Mac 'n Cheese", 
+    title: "Mac 'n Cheese",
     user_id: 1)
     
 Recipe.create(
