@@ -1,5 +1,5 @@
 <%=render partial: "layouts/navbar" %>
-<h2> My Recipes</h2>
+<h2> Recipes</h2>
 <ul>
 <% @recipes.each do |recipe| %>
 <li>
@@ -7,7 +7,7 @@
     </li>
 <%end%>
 
-<h2>My Ingredients</h2>
+<h2>Ingredients</h2>
 
 <% @ingredients.each do |ingredient| %>
     <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>

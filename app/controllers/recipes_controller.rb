@@ -1,12 +1,9 @@
 class RecipesController < ApplicationController
     
-    def index 
-        if user_signed_in?
+    def index
         @recipes = Recipe.all
         @ingredients = Ingredient.all
-    else
-        redirect_to root_path
-    end
+        redirect_to recipes_path
     end
     
     def new
@@ -17,11 +14,10 @@ class RecipesController < ApplicationController
     
     def create
          @recipe = Recipe.new(recipe_params)
-         if @recipe.save
+        @recipe.user = current_user
+         @recipe.save
             redirect_to @recipe
-        else 
-            redirect_to new_recipe_path
-        end
+      
         end
     
     def show

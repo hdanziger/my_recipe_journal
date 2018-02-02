@@ -1,10 +1,2 @@
 <h2> My Recipe Page </h2>
-<h3><%=@user.email%></h3>
-<h3><%=@user.id%></h3>
 
-
-<% @recipes.each do |r| %>
-<%= link_to r.title, recipe_path(r) %><br>
-<%end%>
-<br>
-<%= button_to "Back to All Recipes", recipes_path %>

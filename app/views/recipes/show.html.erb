@@ -4,7 +4,7 @@
 <li><%= i.name %></li>
 <%end%>
 <%= button_to "Back to my Recipes", recipes_path %>
- <% if @user.id == session[:user_id] %>
+ <% if @recipe.user = current_user %>
  <%link_to "Edit this Recipe", edit_recipe_path %>
  <form method="POST" action="/recipes/<%=@recipe.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
