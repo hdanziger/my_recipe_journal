@@ -1,2 +1,10 @@
-<h2> Add an Ingredient</h2>
+<h2>Create a new ingredient for <%= @recipe.title %></h2>
+
+<% form_for (@recipe) do |f| %>
+<div class="field">
+    <%= f.label :ingredients %><br>
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+  <%end%>
+  </div><br> 
+  <h4> Or enter your own: </h4>
 <%= render 'form' %>

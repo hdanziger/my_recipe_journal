@@ -1,6 +1,7 @@
 class IngredientsController < ApplicationController
     
     def new
+        @recipe = Recipe.find(params[:recipe_id])
         @ingredient = Ingredient.new
     end
     
@@ -11,16 +12,33 @@ class IngredientsController < ApplicationController
     
     def show 
         @ingredient = Ingredient.find(params[:id])
-        @recipes = Recipe.all
     end
     
     def edit 
         @ingredient = Ingredient.find(params[:id])
     end
     
+    def update
+         @ingredient = Ingredient.find(params[:id])
+		@ingredient.update(ingredient_params)
+		if @ingredient.save
+		redirect_to ingredient_path(@ingredient)
+		else
+		    render :edit
+		end
+    end
+    
+    def destroy 
+        @ingredient = Ingredient.find(params[:id])
+        @ingredient.delete
+        redirect_to recipes_path
+    end
+    
     
     private
+
+    
     def ingredient_params
-        params.require(:ingredient).permit(:name)
+        params.require(:ingredient).permit(:name, :recipe_id)
     end
 end

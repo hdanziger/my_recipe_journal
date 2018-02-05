@@ -1,12 +1,20 @@
 <h3><strong>Recipe Title:</strong> <%= @recipe.title %></h3>
 <p><strong>Ingredients:</strong></p>
 <% @recipe.ingredients.each do |i| %>
-<li><%= i.name %></li>
+<li><%= link_to i.name, recipe_ingredient_path(i) %></li>
 <%end%>
-<%= button_to "Back to my Recipes", recipes_path %>
- <% if @recipe.user = current_user %>
- <%link_to "Edit this Recipe", edit_recipe_path %>
- <form method="POST" action="/recipes/<%=@recipe.id%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete this Recipe">
- <%end%>
+<p>Added by: <%= @recipe.user.email %></p>
+<%= link_to "Back to Recipes", recipes_path %>
+<p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary"> Add a new Ingredient to this Recipe</a></p>
+
+ <br></br>
+ 
+  <% if @recipe.user = current_user %>
+    <form method="POST" action="/recipes/<%=@recipe.id%>">
+         <input id="hidden" type="hidden" name="_method" value="DELETE">
+         <input type="submit" value="Delete this Recipe"><br>
+         
+         <%=link_to "Edit this Recipe", edit_recipe_path %>
+         <%else %>
+         <p> Thanks for adding a recipe! </p>
+    <%end%>

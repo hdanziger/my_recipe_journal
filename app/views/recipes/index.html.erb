@@ -7,15 +7,8 @@
     </li>
 <%end%>
 
-<h2>Ingredients</h2>
-
-<% @ingredients.each do |ingredient| %>
-    <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
-    <%end%>
-</ul>
 
 <br>
 
 <%=link_to "Add a New Recipe", new_recipe_path %><br>
-<%=link_to "Add a New Ingredient", new_ingredient_path %><br>
 <%= link_to "See my Recipes", user_path(current_user) %>

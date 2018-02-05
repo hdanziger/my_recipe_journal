@@ -1,8 +1,8 @@
 <p>Ingredient: <%=@ingredient.name%> </p>
-<%= button_to "Back to my Recipes", recipes_path %>
- <% if current_user == session[:user_id] %>
- <%link_to "Edit this Ingredient", edit_ingredient_path %>
+<%= link_to "Back to my Recipes", recipes_path %><br>
+ 
+ <%=link_to "Edit this Ingredient", edit_ingredient_path %>
  <form method="POST" action="/ingredients/<%=@ingredient.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete this Ingredient">
- <%end%>
+ 

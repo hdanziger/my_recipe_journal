@@ -1,7 +1,5 @@
 <h1> Welcome My Recipe journal! </h1>
-    
-    <li> <%= link_to "Sign in", new_user_session_path %></li>
- <li> <%= link_to "Sign up", new_user_registration_path %></li>
+<%= render partial: "layouts/sign_in" %>
     <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
     
    

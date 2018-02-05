@@ -13,3 +13,18 @@
 
  if user_signed_in?
         @user = User.find_by(id: params[:id])
+      
+      
+      @ingredient = Ingredient.find(params[:id])
+        @recipes = Recipe.all
+        @recipe = Recipe.find_by(id: params[:id])
+        
+        Recipe Index: (if decide to re-add ingredients to indext)
+        <h2>Ingredients</h2>
+
+<% @ingredients.each do |ingredient| %>
+    <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+    <%end%>
+</ul>
+<%=link_to "Add a New Ingredient", new_ingredient_path %><br>
+       

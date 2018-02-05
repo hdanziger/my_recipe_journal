@@ -1,2 +1,9 @@
 <h2> My Recipe Page </h2>
-
+<h3> by <%= @user.email %></h3>
+<% if @user = current_user %>
+<% @user.recipes.each do |r| %>
+<li><%= link_to r.title, recipe_path(r) %></li><br>
+<%end%>
+<%end%>
+<br>
+<%= button_to "Back to All Recipes", recipes_path %>
