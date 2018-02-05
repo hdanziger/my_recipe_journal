@@ -41,3 +41,6 @@
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete this Ingredient">
       <%end%>
+      
+      
+       <%= button_to 'Add to my recipes', user_path(current_user) %></p>

@@ -8,7 +8,7 @@ class IngredientsController < ApplicationController
     
     def create
         @ingredient = Ingredient.create(ingredient_params)
-            redirect_to recipe_path(@ingredient.recipe_id)
+            redirect_to edit_recipe_path(@ingredient.recipe_id)
     end
     
     def show 

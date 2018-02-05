@@ -10,7 +10,7 @@
  <br></br>
  
   <% if @recipe.user == current_user %>
-  <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary"> Add a new Ingredient to this Recipe</a></p>
+  <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary"> Add a new Ingredient</a></p>
     <form method="POST" action="/recipes/<%=@recipe.id%>">
          <input id="hidden" type="hidden" name="_method" value="DELETE">
          <input type="submit" value="Delete this Recipe"><br>
