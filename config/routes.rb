@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :ingredients, only: [:new, :show, :create, :edit, :update, :destroy]
   resources :recipe_ingredients
-  resources :users, only: [:show]
+  resources :users 
   
   post '/recipes/:id/delete', to: "recipes#destroy"
   post '/ingredients/:id/delete', to: "ingredients#destroy"

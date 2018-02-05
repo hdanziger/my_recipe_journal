@@ -2,8 +2,10 @@
 <h3> by <%= @user.email %></h3>
 <% if @user = current_user %>
 <% @user.recipes.each do |r| %>
-<li><%= link_to r.title, recipe_path(r) %></li><br>
+<li><%= link_to r.title, recipe_path(r) %> 
+<%=button_to "Remove", '/recipes/:id/delete' %></li>
+
 <%end%>
 <%end%>
 <br>
-<%= button_to "Back to All Recipes", recipes_path %>
+<%= link_to "Back to All Recipes", recipes_path %>

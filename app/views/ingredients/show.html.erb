@@ -1,8 +1,10 @@
 <p>Ingredient: <%=@ingredient.name%> </p>
 <%= link_to "Back to my Recipes", recipes_path %><br>
  
+<% if @recipe.user == current_user %>
  <%=link_to "Edit this Ingredient", edit_ingredient_path %>
  <form method="POST" action="/ingredients/<%=@ingredient.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete this Ingredient">
+      <%end%>
  

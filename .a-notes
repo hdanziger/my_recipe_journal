@@ -19,7 +19,7 @@
         @recipes = Recipe.all
         @recipe = Recipe.find_by(id: params[:id])
         
-        Recipe Index: (if decide to re-add ingredients to indext)
+        Recipe Index: (if decide to re-add ingredients to index)
         <h2>Ingredients</h2>
 
 <% @ingredients.each do |ingredient| %>
@@ -27,4 +27,17 @@
     <%end%>
 </ul>
 <%=link_to "Add a New Ingredient", new_ingredient_path %><br>
+
+
+--check boxes for ingredients without a form:
+    <% @ingredients.each do |ingredient| %>
+    <%= check_box_tag "ingredients[]", ingredient.id %> <%= ingredient.name %>
+    <% end %>
        
+       
+        <% if @recipe.user == current_user %>
+ <%=link_to "Edit this Ingredient", edit_ingredient_path %>
+ <form method="POST" action="/ingredients/<%=@ingredient.id%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete this Ingredient">
+      <%end%>
