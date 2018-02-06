@@ -7,13 +7,14 @@ class IngredientsController < ApplicationController
     end
     
     def create
-        @ingredient = Ingredient.create(ingredient_params)
-            redirect_to edit_recipe_path(@ingredient.recipe_id)
+         @ingredient = Ingredient.create(ingredient_params)
+            redirect_to recipe_path(@ingredient.recipe_id)
+            binding.pry
     end
     
     def show 
         @ingredient = Ingredient.find(params[:id])
-        #@recipe = Recipe.find_by(id: params[:id])
+        @recipe = Recipe.find_by(id: params[:id])
     end
     
     def edit 

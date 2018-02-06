@@ -1,7 +1,12 @@
 <p>Ingredient: <%=@ingredient.name%> </p>
 <%= link_to "Back to my Recipes", recipes_path %><br>
+
+<h3> Other Recipes that feature this ingredient: </h3>
+<% @ingredient.recipes.each do |recipe| %>
+<li><%= recipe.title %></li>
+<%end%>
  
-<% if @recipe.user == current_user %>
+<% if @ingredient.recipe.user == current_user %>
  <%=link_to "Edit this Ingredient", edit_ingredient_path %>
  <form method="POST" action="/ingredients/<%=@ingredient.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">

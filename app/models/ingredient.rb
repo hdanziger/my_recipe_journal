@@ -1,4 +1,4 @@
 class Ingredient < ApplicationRecord
-    has_many :recipe_ingredients
-    belongs_to :recipe
+    validates :name, presence: :true
+    has_many :recipes, through: :recipe_ingredients
 end

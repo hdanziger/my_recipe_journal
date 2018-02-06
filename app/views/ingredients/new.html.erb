@@ -1,5 +1,12 @@
-<h2>Add a new ingredient</h2>
+<h2>Add a new ingredient to <%= @recipe.title %></h2>
 
+
+<h3> Here are the current ingredients: </h3>
+<% @recipe.ingredients.each do |i| %>
+    <li><%= i.name %></li>
+    <%end%>
+
+<h3> Add Your Own: </h3>
 <%= render 'form' %>
 
  
