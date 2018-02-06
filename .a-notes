@@ -44,3 +44,6 @@
       
       
        <%= button_to 'Add to my recipes', user_path(current_user) %></p>
+       
+       
+    href of recipe/ingredients   <a href="/recipes/<%=@recipe.id %>/ingredients/<%=i.id%>"><%=i.name%></a> 

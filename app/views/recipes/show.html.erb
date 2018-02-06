@@ -1,18 +1,12 @@
 <% if notice %>
 <p> <%= notice %></p>
 <%end%>
-<h3><strong>Recipe Title:</strong> <%= @recipe.title %></h3>
-<p><strong>Ingredients:</strong></p>
-<% @recipe.ingredients.each do |i| %>
-<li><%= link_to i.name, recipe_ingredient_path(@recipe, i) %></li>
-<%end%>
-<p>Added by: <%= @recipe.user.email %></p>
-<%= link_to "Back to Recipes", recipes_path %>
+<%= render partial: "recipe" %> 
 
 
  <br></br>
  
-  <% if @recipe.user == current_user %>
+  <% if @recipe.user_id == current_user.id %>
   <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary"> Add a new Ingredient</a></p>
     <form method="POST" action="/recipes/<%=@recipe.id%>">
          <input id="hidden" type="hidden" name="_method" value="DELETE">

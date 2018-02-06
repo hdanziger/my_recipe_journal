@@ -18,22 +18,17 @@ Recipe.create(
     user_id: 1)
     
 Ingredient.create(
-    name: "Cheese",
-    recipe_id: 1)
+    name: "Cheese")
     
 Ingredient.create(
-    name: "Milk",
-    recipe_id: 1)
+    name: "Milk")
     
 Ingredient.create(
-    name: "Noodles",
-    recipe_id: 1)
+    name: "Noodles")
     
 Ingredient.create(
-    name: "Chicken",
-    recipe_id: 2)
+    name: "Chicken")
 
 Ingredient.create(
-    name: "Lemon",
-    recipe_id: 2)
+    name: "Lemon")
  

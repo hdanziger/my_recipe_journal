@@ -2,14 +2,13 @@ class IngredientsController < ApplicationController
     
     def new
         @recipe = Recipe.find(params[:recipe_id])
-        @ingredient = Ingredient.new(recipe_id: @recipe.id)
+        @ingredient = @recipe.ingredient.build
         @ingredients = Ingredient.all
     end
     
     def create
          @ingredient = Ingredient.create(ingredient_params)
             redirect_to recipe_path(@ingredient.recipe_id)
-            binding.pry
     end
     
     def show 
