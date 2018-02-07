@@ -1,5 +1,6 @@
+<%=render partial: "layouts/navbar" %>
 <p>Ingredient: <%=@ingredient.name%> </p>
-<%= link_to "Back to my Recipes", recipes_path %><br>
+<%= link_to "Back to Recipes", recipes_path %><br>
 
 <h3> Other Recipes that feature this ingredient: </h3>
 <% @ingredient.recipes.each do |recipe| %>
@@ -7,10 +8,12 @@
 <%end%>
  <br></br>
 
-
- <%=link_to "Edit this Ingredient", edit_ingredient_path %>
+ <%if (current_user.recipes & @ingredient.recipes).any?%>
+ <%=link_to "Edit this Ingredient", edit_recipe_ingredient_path %>
  <form method="POST" action="/ingredients/<%=@ingredient.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete this Ingredient">
+
+<%end%>
  
  

@@ -4,7 +4,7 @@
 
 <h3> Here are the current ingredients: </h3>
 <% @recipe.recipe_ingredients.each do |r_i| %>
-    <li><%= link_to r_i.ingredient.name, ingredient_path(r_i) %></li>
+    <li><%= link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %></li>
     <%end%>
     
     

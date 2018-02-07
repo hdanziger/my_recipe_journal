@@ -51,3 +51,5 @@
 
 
 <% if @ingredient.recipe.user == current_user %> 
+@ingredient.recipes == current_user.recipes
+<nav class=""></nav>

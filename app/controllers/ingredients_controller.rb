@@ -18,6 +18,7 @@ class IngredientsController < ApplicationController
     def show 
         @ingredient = Ingredient.find(params[:id])
         @recipe = Recipe.find_by(id: params[:id])
+        
     end
     
     def edit 
@@ -25,10 +26,11 @@ class IngredientsController < ApplicationController
     end
     
     def update
-         @ingredient = Ingredient.find(params[:id])
+         @recipe = Recipe.find_by(id: params[:id])
+		@ingredient = Ingredient.find_or_create_by(ingredient_params)
 		@ingredient.update(ingredient_params)
-		if @ingredient.save
-		redirect_to ingredient_path(@ingredient)
+	    if @ingredient.save
+		redirect_to recipe_ingredient_path(@ingredient.recipe_id, @ingredient)
 		else
 		    render :edit
 		end

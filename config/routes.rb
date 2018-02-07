@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#home'
+  get '/recipes/:id/delete', to: "recipes#destroy"
+  get '/ingredients/:id/delete', to: "ingredients#destroy"
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
    resources :recipes do 
     resources :ingredients, only: [:new, :edit, :create, :show]
@@ -8,8 +10,7 @@ Rails.application.routes.draw do
   resources :recipe_ingredients
   resources :users, only: [:show]
   
-  post '/recipes/:id/delete', to: "recipes#destroy"
-  post '/ingredients/:id/delete', to: "ingredients#destroy"
+  
  
   
   

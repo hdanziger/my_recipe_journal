@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
         @recipe.delete
         redirect_to recipes_path
     else 
-        flash[:notice] = "You do not have permission to delete this recipe"
+       redirect_to recipe_path(@recipe)
     end
     end
 
