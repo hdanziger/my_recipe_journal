@@ -2,13 +2,17 @@ class IngredientsController < ApplicationController
     
     def new
         @recipe = Recipe.find(params[:recipe_id])
-        @ingredient = @recipe.ingredient.build
+        @ingredient = Ingredient.new(recipe_id: @recipe.id)
         @ingredients = Ingredient.all
     end
     
     def create
-         @ingredient = Ingredient.create(ingredient_params)
-            redirect_to recipe_path(@ingredient.recipe_id)
+         @ingredient = Ingredient.new(ingredient_params)
+             if @ingredient.save
+             redirect_to ingredient_path(@ingredient)
+         else 
+             render :new
+         end
     end
     
     def show 

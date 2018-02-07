@@ -1,8 +1,0 @@
-<h3><strong>Recipe Title:</strong> <%= @recipe.title %></h3>
-<p><strong>Ingredients:</strong></p>
-<%binding.pry%>
-<% @recipe.recipe_ingredients.each do |r_i| %>
-<li></li> <%=link_to r_i.ingredient.name, ingredient_path(ingredient)%></li>
-<%end%>
-<p>Added by: <%= @recipe.user.email %></p>
-<%= link_to "Back to Recipes", recipes_path %>

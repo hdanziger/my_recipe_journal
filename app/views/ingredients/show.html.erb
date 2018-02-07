@@ -3,13 +3,14 @@
 
 <h3> Other Recipes that feature this ingredient: </h3>
 <% @ingredient.recipes.each do |recipe| %>
-<li><%= recipe.title %></li>
+<li><%= link_to recipe.title, recipe_path(recipe) %></li>
 <%end%>
- 
-<% if @ingredient.recipe.user == current_user %>
+ <br></br>
+
+
  <%=link_to "Edit this Ingredient", edit_ingredient_path %>
  <form method="POST" action="/ingredients/<%=@ingredient.id%>/delete">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete this Ingredient">
-      <%end%>
+ 
  

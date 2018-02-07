@@ -47,3 +47,7 @@
        
        
     href of recipe/ingredients   <a href="/recipes/<%=@recipe.id %>/ingredients/<%=i.id%>"><%=i.name%></a> 
+    
+
+
+<% if @ingredient.recipe.user == current_user %> 
