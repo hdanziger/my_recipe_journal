@@ -40,7 +40,7 @@ class RecipesController < ApplicationController
 		end
     end
     
-    def destroy
+    def delete
          @recipe = Recipe.find_by(id: params[:id])
         if @recipe.user = current_user
         @recipe.delete

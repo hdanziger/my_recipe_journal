@@ -53,3 +53,22 @@
 <% if @ingredient.recipe.user == current_user %> 
 @ingredient.recipes == current_user.recipes
 <nav class=""></nav>
+
+
+
+    def create
+        @recipe = Recipe.find_by(id: params[:recipe_id])
+         @ingredient = Ingredient.new(:recipe_id => @recipe.id)
+         binding.pry
+             if @ingredient.save
+             redirect_to recipe_path(@recipe)
+         else 
+             render :new
+         end
+    end
+    
+    
+    alternative: 
+    <% @recipe.recipe_ingredients.each do |r_i| %>
+<li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient)%></li>
+<%end%>
