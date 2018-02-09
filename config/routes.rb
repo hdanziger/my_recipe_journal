@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#home'
-  get '/recipes/:id/delete', to: "recipes#delete"
-  get '/ingredients/:id/delete', to: "ingredients#delete"
+  post '/recipes/:id/delete', to: "recipes#destroy"
+  
+   post '/ingredients/alphabetical', to: 'ingredients#alphabetical', as: 'alphabetical'
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
    resources :recipes do 
-    resources :ingredients, only: [:new, :edit] 
+    resources :ingredients
   end
   resources :ingredients
   resources :recipe_ingredients

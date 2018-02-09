@@ -4,20 +4,17 @@
 <%end%>
 <h3><strong>Recipe Title:</strong> <%= @recipe.title %></h3>
 <p><strong>Ingredients:</strong></p>
-<% @recipe.ingredients.each do |i|%>
-<%=link_to i.name, recipe_ingredient_path(@recipe, i)%>
-    <%end%>
+ <% @recipe.recipe_ingredients.each do |r_i| %>
+<li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient)%></li>
+<%end%>
 
 <p>Added by: <%= @recipe.user.email %></p>
 <%= link_to "Back to Recipes", recipes_path %>
 
  <br></br>
- 
   <% if @recipe.user_id == current_user.id %>
   <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary"> Add a new Ingredient</a></p>
-    <form method="POST" action="/recipes/<%=@recipe.id%>">
-         <input id="hidden" type="hidden" name="_method" value="DELETE">
-         <input type="submit" value="Delete this Recipe"><br>
-         
+    <%=button_to "Remove", recipe_path(@recipe), :method => "delete" %></li>
          <%=link_to "Edit this Recipe", edit_recipe_path %>
     <%end%>
+

@@ -72,3 +72,36 @@
     <% @recipe.recipe_ingredients.each do |r_i| %>
 <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient)%></li>
 <%end%>
+
+
+seeds
+
+Recipe.create(
+    title: "Lemon Chicken",
+    user_id: 1)
+    
+Ingredient.create(
+    name: "Cheese",
+    recipe_id: 1)
+    
+Ingredient.create(
+    name: "Milk",
+    recipe_id: 1)
+    
+Ingredient.create(
+    name: "Noodles",
+    recipe_id: 1)
+    
+Ingredient.create(
+    name: "Chicken",
+    recipe_id: 2)
+
+Ingredient.create(
+    name: "Lemon",
+    recipe_id: 2)
+ 
+<form method="POST" action="/recipes/<%=@recipe.id%>">
+         <input id="hidden" type="hidden" name="_method" value="DELETE">
+         <input type="submit" value="Delete this Recipe"><br>
+         
+         ActiveRecord::Base.connection.execute

@@ -7,6 +7,9 @@
 <li><%= link_to recipe.title, recipe_path(recipe) %></li>
 <%end%>
  <br></br>
+ 
+ <h1>Here is a list of all the ingredients in alphabetical order! </h1>
+<h2> <%= @ingredients.alphabetical %></h2>
 
  <%if (current_user.recipes & @ingredient.recipes).any?%>
  <%=link_to "Edit this Ingredient", edit_recipe_ingredient_path %>
