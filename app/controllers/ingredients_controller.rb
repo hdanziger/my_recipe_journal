@@ -13,7 +13,6 @@ class IngredientsController < ApplicationController
      def create
          @recipe = Recipe.find_by(id: params[:recipe_id])
          @ingredient = Ingredient.new(ingredient_params)
-         #binding.pry
          @ingredient.recipes << @recipe
             if @ingredient.save
              redirect_to recipe_ingredient_path(@recipe.id, @ingredient.id)

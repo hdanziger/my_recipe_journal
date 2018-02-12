@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-    validates :name, presence: :true, uniqueness:  { case_sensitive: false, message: "Ingredient must be unique"}
+    validates :name, presence: :true, uniqueness:  { case_sensitive: false}
     has_many :recipe_ingredients
     has_many :recipes, through: :recipe_ingredients
     

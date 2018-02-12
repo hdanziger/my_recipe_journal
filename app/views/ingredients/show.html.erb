@@ -2,7 +2,7 @@
 <p>Ingredient: <%=@ingredient.name%> </p>
 <%= link_to "Back to Recipes Home", recipes_path %><br>
 
-<h3> Other Recipes that feature this ingredient: </h3>
+<h3> Recipes that feature this ingredient: </h3>
 <% @ingredient.recipes.each do |recipe| %>
 <li><%= link_to recipe.title, recipe_path(recipe) %></li>
 <%end%>
