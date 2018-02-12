@@ -117,3 +117,11 @@ Ingredient.create(
        name
       end
     end
+    
+    	#def destroy
+		 @recipe = Recipe.find_by(id: params[:recipe_id])
+         @ingredient = Ingredient.find(params[:id])
+        @ingredient.delete
+        redirect_to recipes_path
+    end
+    

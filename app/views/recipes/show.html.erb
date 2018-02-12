@@ -9,7 +9,7 @@
 <%end%>
 
 <p>Added by: <%= @recipe.user.email %></p>
-<%= link_to "Back to Recipes", recipes_path %>
+<%= link_to "Back to Recipes Home", recipes_path %>
 
  <br></br>
   <% if @recipe.user_id == current_user.id %>

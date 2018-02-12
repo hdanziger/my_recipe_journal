@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-    validates :name, presence: :true
+    validates :name, presence: :true, uniqueness:  { case_sensitive: false, message: "Ingredient must be unique"}
     has_many :recipe_ingredients
     has_many :recipes, through: :recipe_ingredients
     
@@ -13,6 +13,7 @@ class Ingredient < ApplicationRecord
          end
        names.each.sort_by {|name| name}.join( ", ") 
    end
+ 
         
 end
 

@@ -1,7 +1,6 @@
 <%= render partial: "layouts/navbar" %>
 <h2>Add a new ingredient to <%= @recipe.title %></h2>
 
-
 <h3> Here are the current ingredients: </h3>
 <% @recipe.recipe_ingredients.each do |r_i| %>
     <li><%=r_i.ingredient.name %></li>
@@ -9,21 +8,16 @@
     
     
 <h3> Add Your Own: </h3>
-<%= render 'form' %>
-    
-   
-<style>
-p.groove {border-style: groove;}
-</style>
-<body>
-   
-<p class="groove">
-<h3>And here are existing ingredients:</3>
+<%= render 'form' %><br>
+
+
+
+<hr>
+    <h3> And here are existing ingredients:</h3>
     <% @ingredients.each do |i| %>
-    <li><%= i.name %></li>
-    <%end%> 
-    </p> 
-    </body>
+         <li><%= i.name %></li>
+    <%end%>
+    
     <!-- <h4><%= link_to "Follow This link to add any of the above ingredients to #{@recipe.title}", edit_recipe_path(@recipe) %></h4>-->
     
 
