@@ -1,5 +1,9 @@
 class IngredientsController < ApplicationController
     
+    def alphabetical
+		    @ingredients = Ingredient.all
+		end
+    
     def new
         @recipe = Recipe.find(params[:recipe_id])
         @ingredient = Ingredient.new(recipe_id: @recipe.id)
@@ -37,6 +41,7 @@ class IngredientsController < ApplicationController
 		else
 		    render :edit
 		end
+		
 end
     
     

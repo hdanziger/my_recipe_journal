@@ -4,18 +4,30 @@
 
 <h3> Here are the current ingredients: </h3>
 <% @recipe.recipe_ingredients.each do |r_i| %>
-    <li><%= link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %></li>
+    <li><%=r_i.ingredient.name %></li>
     <%end%>
     
     
 <h3> Add Your Own: </h3>
 <%= render 'form' %>
     
-    <h3> And here are existing ingredients: </h3>
+   
+<style>
+p.groove {border-style: groove;}
+</style>
+<body>
+   
+<p class="groove">
+<h3>And here are existing ingredients:</3>
     <% @ingredients.each do |i| %>
-    <li> <%= i.name %></li>
-    <%end%>
-    <h4><%= link_to "Follow This link to add any of the above ingredients to #{@recipe.title}", edit_recipe_path(@recipe) %></h4>
+    <li><%= i.name %></li>
+    <%end%> 
+    </p> 
+    </body>
+    <!-- <h4><%= link_to "Follow This link to add any of the above ingredients to #{@recipe.title}", edit_recipe_path(@recipe) %></h4>-->
+    
+
+
 
 
  

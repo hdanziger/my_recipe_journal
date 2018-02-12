@@ -7,11 +7,12 @@ class Ingredient < ApplicationRecord
      
      
      def self.alphabetical
-      self.all.each_with_index do |name|
-          self.name
-      end
-    end
-     
+      names = []
+      self.all.collect do |ingredient|
+       names << ingredient.name.capitalize
+         end
+       names.each.sort_by {|name| name}.join( ", ") 
+   end
         
 end
 

@@ -105,3 +105,15 @@ Ingredient.create(
          <input type="submit" value="Delete this Recipe"><br>
          
          ActiveRecord::Base.connection.execute
+         
+         
+            def self.alphabetical
+      names =[]
+      self.all.collect do |ingredient| 
+       names << ingredient.name
+      end
+       names.join("-")
+       names.collect.sort_by do |name|
+       name
+      end
+    end
