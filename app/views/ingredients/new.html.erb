@@ -14,7 +14,7 @@
 
 <hr>
     <h3> And here are existing ingredients:</h3>
-    <% @recipe.ingredients.each do |i| %> 
+    <% Ingredient.all.each do |i| %> 
          <li><%= i.name %></li>
     <%end%>
     

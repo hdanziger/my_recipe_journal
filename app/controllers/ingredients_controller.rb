@@ -5,9 +5,9 @@ class IngredientsController < ApplicationController
 		end
     
     def new
+         @ingredients = Ingredient.all
         @recipe = Recipe.find(params[:recipe_id])
         @ingredient = Ingredient.new(recipe_id: @recipe.id)
-        @ingredients = Ingredient.all
     end
     
      def create
@@ -24,7 +24,6 @@ class IngredientsController < ApplicationController
     def show 
         @ingredient = Ingredient.find(params[:id])
         @recipe = Recipe.find_by(id: params[:recipe_id])
-        @ingredients = Ingredient.all
         
     end
  

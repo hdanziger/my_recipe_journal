@@ -18,6 +18,3 @@ class Ingredient < ApplicationRecord
 end
 
 
-#ingredient = "SELECT ingredient_id, COUNT(*) FROM recipe_ingredients GROUP BY ingredient_id ORDER BY COUNT(*) DESC LIMIT 1"
-#ingredient[0][0]
-#@ingredient = Ingredient.find(params[:id])

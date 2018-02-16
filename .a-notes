@@ -125,3 +125,14 @@ Ingredient.create(
         redirect_to recipes_path
     end
     
+    
+      #def add_ingredient(ingredient_id)
+        #if ingredient_ids.include?(ingredient_id.to_i)
+            #current = recipe_ingredients.find_by(ingredient_id: ingredient_id)
+            #current.quantity += 1
+           # current
+       # else 
+            #recipe_ingredients.build(ingredient_id: ingredient#_id)
+        #end
+    #end
+    RecipeIngredient.where(:ingredient_id => 1)
