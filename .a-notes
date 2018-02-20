@@ -136,3 +136,6 @@ Ingredient.create(
         #end
     #end
     RecipeIngredient.where(:ingredient_id => 1)
+    
+    
+    <%=r_i.quantity %>

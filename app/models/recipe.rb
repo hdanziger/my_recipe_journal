@@ -7,14 +7,14 @@ class Recipe < ApplicationRecord
     accepts_nested_attributes_for :ingredients
     
     
-  def add_quantity(ingredient_id)
-      if ingredient_ids.include?(ingredient_id.to_i)
-      current_quantity = recipe_ingredients.find_by(ingredient_id: ingredient_id)
-        if current_quantity.quantity + 1
-          current_quantity.count
+   def add_quantity(ingredient_id)
+      if ingredient_ids.include?(ingredient.to_i)
+            current = recipe_ingredients.find_by(ingredient_id: ingredient_id)
+            current.quantity += 1
+            current
         else 
             recipe_ingredients.build(ingredient_id: ingredient_id)
-      end
-  end
-  end
+        end
+    end
+ 
 end

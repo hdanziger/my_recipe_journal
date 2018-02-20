@@ -2,7 +2,7 @@ class RecipeIngredientsController < ApplicationController
   
   def create
     @recipe_ingredients = RecipeIngredient.all
-    @recipe_ingredient = add_quantity(params[:ingredient_id])
+    recipe_ingredient = add_quantity(params[:ingredient_id])
     
     recipe_ingredient.save
     
