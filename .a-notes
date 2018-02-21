@@ -139,3 +139,5 @@ Ingredient.create(
     
     
     <%=r_i.quantity %>
+    
+    "breakfast", "lunch", "dinner", "snack", "dessert"

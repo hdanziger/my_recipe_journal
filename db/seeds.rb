@@ -10,15 +10,15 @@ User.create(
     password: "123456")
 
 Recipe.create([
-    {:title => "Mac 'n Cheese", :user_id => 1,
-        :ingredients_attributes => [
-            {name: "Cheese"},    
+    {:title => "Mac 'n Cheese",:user_id => 1,
+        ingredients_attributes: [
+        {name: "Cheese"},    
         {name: "Milk"},
         {name: "Noodles"}
             ]
     },
-    {:title => "Lemon Chicken", :user_id => 1,
-    ingredients_attributes: [
+    {:title => "Lemon Chicken",:user_id => 1,
+        ingredients_attributes: [
         {name: "Chicken"},    
         {name: "Lemon"}
     ]
