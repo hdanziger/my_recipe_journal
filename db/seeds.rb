@@ -10,8 +10,8 @@ User.create(
     password: "123456")
 
 Recipe.create([
-    { title: "Mac n' Cheese", user_id: 1}, 
-    { title: 'Lemon Chicken', user_id: 1}
+    { title: "Mac n' Cheese", meal: "snack", user_id: 1}, 
+    { title: 'Lemon Chicken', meal: "dinner", user_id: 1}
     ])
 
 Ingredient.create([ 

@@ -5,6 +5,11 @@ class RecipesController < ApplicationController
         @ingredients = Ingredient.all
     end
     
+    def cheese
+        @recipes = Recipe.all 
+        render :scope
+    end
+    
     def new
         @recipe = Recipe.new
         @recipes = Recipe.all
@@ -54,6 +59,6 @@ end
     private
     
     def recipe_params
-        params.require(:recipe).permit(:title, :ingredient_ids => [])
+        params.require(:recipe).permit(:title, :meal, :ingredient_ids => [])
     end
 end

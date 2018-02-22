@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/recipes/:id/delete', to: "recipes#destroy"
   
    get '/ingredients/alphabetical', to: 'ingredients#alphabetical', as: 'alphabetical'
+   get '/recipes/cheese', to: 'recipes#cheese', as: 'cheese'
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
    resources :recipes do 
     resources :ingredients

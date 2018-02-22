@@ -3,6 +3,7 @@
 <p> <%= notice %></p>
 <%end%>
 <h3><strong>Recipe Title:</strong> <%= @recipe.title %> </h3>
+<h4>Meal: <%= @recipe.meal %></h4>
 <p><strong>Ingredients:</strong></p>
  <% @recipe.recipe_ingredients.each do |r_i| %>
 <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %>
@@ -10,7 +11,6 @@
 </li><br>
 
 <%end%>
-
 
 <p>Added by: <%= @recipe.user.email %></p>
 <%= link_to "Back to Recipes Home", recipes_path %>
