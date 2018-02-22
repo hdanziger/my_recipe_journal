@@ -4,7 +4,8 @@ class Recipe < ApplicationRecord
     has_many :ingredients, through: :recipe_ingredients
     belongs_to :user
     
-    accepts_nested_attributes_for :ingredients
+   # accepts_nested_attributes_for :ingredients
+   scope :cheese, -> { joins(:ingredients).where('name = "Cheese"') }
     
     
    def add_quantity(ingredient_id)
