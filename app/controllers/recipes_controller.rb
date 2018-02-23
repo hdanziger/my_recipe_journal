@@ -12,7 +12,8 @@ class RecipesController < ApplicationController
     
     def new
         @recipe = Recipe.new
-        @recipes = Recipe.all
+       @recipe.ingredients.build
+
     end
     
     def create
@@ -23,7 +24,7 @@ class RecipesController < ApplicationController
         else
             render :new
         end
-    end
+        end
     end
     
     def show
@@ -59,6 +60,6 @@ end
     private
     
     def recipe_params
-        params.require(:recipe).permit(:title, :meal, :ingredient_ids => [])
+        params.require(:recipe).permit(:title, :meal, :ingredient_ids => [], :ingredients_attributes => [:name, :recipe_ingredients => [:quantity]])
     end
 end

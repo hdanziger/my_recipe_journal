@@ -7,6 +7,7 @@
 <p><strong>Ingredients:</strong></p>
  <% @recipe.recipe_ingredients.each do |r_i| %>
 <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %>
+<%= r_i.quantity %>
 
 </li><br>
 
@@ -19,6 +20,6 @@
   <% if @recipe.user_id == current_user.id %>
     <%=button_to "Remove", recipe_path(@recipe), :method => "delete" %></li>
     <%=link_to "Edit this Recipe", edit_recipe_path %>
-     <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary">Create your own Ingredient for this Recipe</a></p>
+     <!--<p><a href="/recipes/(add front) @recipe.id %>/ingredients/new" class="btn btn-primary">Create your own Ingredient for this Recipe</a></p>-->
     <%end%>
 

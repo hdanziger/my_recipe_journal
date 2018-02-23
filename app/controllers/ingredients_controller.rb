@@ -5,15 +5,12 @@ class IngredientsController < ApplicationController
 		end
     
     def new
-        if params[:recipe_id]
         @recipe = Recipe.find(params[:recipe_id])
          @ingredients = @recipe.ingredients
         @ingredient = Ingredient.new(recipe_id: @recipe.id)
     end
-    end
     
      def create
-         if params[:recipe_id]
          @recipe = Recipe.find_by(id: params[:recipe_id])
          @ingredient = @recipe.ingredients.new(ingredient_params)
          @ingredient.recipes << @recipe
@@ -22,14 +19,11 @@ class IngredientsController < ApplicationController
          else 
              render :new
          end
-     end
     end
     
     def show 
-        if params[:recipe_id]
         @recipe = Recipe.find_by(id: params[:recipe_id])
         @ingredient = @recipe.ingredients.find_by(id: params[:id])
-    end
     end
  
     def edit 
@@ -50,6 +44,6 @@ class IngredientsController < ApplicationController
     
     private
     def ingredient_params
-        params.require(:ingredient).permit(:name, :recipe_id)
+        params.require(:ingredient).permit(:name, :recipe_id, [:recipes_ingredients => [:quantity]])
     end
 end

@@ -6,16 +6,13 @@ class Recipe < ApplicationRecord
     
    # accepts_nested_attributes_for :ingredients
    scope :cheese, -> { joins(:ingredients).where('name = "Cheese"') }
+   scope :dinner, -> { where(meal: "dinner") }
     
-    
-   def add_quantity(ingredient_id)
-      if ingredient_ids.include?(ingredient.to_i)
-            current = recipe_ingredients.find_by(ingredient_id: ingredient_id)
-            current.quantity += 1
-            current
-        else 
-            recipe_ingredients.build(ingredient_id: ingredient_id)
+      def ingredients_attributes=(ingredients_attributes)
+            ingredients_attributes.values.each do |ia|
+        @ingredient = Ingredient.find_or_create_by(name: :name)
+        self.recipe_ingredients.build(ingredient: @ingredient, quantity: ia[:recipe_ingredients][:quantity])
         end
     end
+  end
  
-end

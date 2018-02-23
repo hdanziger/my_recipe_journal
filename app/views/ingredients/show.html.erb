@@ -1,5 +1,5 @@
 <%=render partial: "layouts/navbar" %>
-<p>Ingredient: <%=@ingredient.name%> </p>
+<p>Ingredient: <%=@ingredient.name%></p>
 <%= link_to "Back to Recipes Home", recipes_path %><br>
 
 <h3> Recipes that feature this ingredient </h3>
@@ -9,7 +9,7 @@
  <br></br>
  
  <%if (current_user.recipes & @ingredient.recipes).any?%>
- <%=link_to "Edit this Ingredient", edit_recipe_ingredient_path %>
+ <%=link_to "Edit this Ingredient", edit_recipe_path(@recipe) %>
 
 <%end%>
  
