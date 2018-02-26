@@ -141,3 +141,25 @@ Ingredient.create(
     <%=r_i.quantity %>
     
     "breakfast", "lunch", "dinner", "snack", "dessert"
+    
+    
+    
+
+ #       def ingredients_attributes=(ingredients_attributes)
+#             ingredients_attributes.each do |i, v|
+#                 binding.pry
+#                 #v[:name]
+#                 self.recipe_ingredients.find_or_create_by(name: v[:name],quantity: v[:recipe_ingredients][:quantity])
+#         end
+#     end
+#   end
+ 
+ 
+ #     def self.dinner
+#       dinners = []
+#       self.all.collect do |recipe|
+#       dinners << recipe.meal.capitalize
+#          end
+#       dinners.join( ", ") 
+#   end
+ 

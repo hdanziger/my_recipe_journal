@@ -5,9 +5,8 @@ class RecipesController < ApplicationController
         @ingredients = Ingredient.all
     end
     
-    def cheese
+    def scope
         @recipes = Recipe.all 
-        render :scope
     end
     
     def new
@@ -17,7 +16,10 @@ class RecipesController < ApplicationController
     end
     
     def create
+       # binding.pry
          @recipe = Recipe.new(recipe_params)
+         binding.pry
+        @recipe.recipe_ingredients.update(quantity: params[:recipe][:recipe_ingredients][:quantity])
         if @recipe.user = current_user
          if @recipe.save
             redirect_to recipe_path(@recipe)
@@ -60,6 +62,6 @@ end
     private
     
     def recipe_params
-        params.require(:recipe).permit(:title, :meal, :ingredient_ids => [], :ingredients_attributes => [:name, :recipe_ingredients => [:quantity]])
+        params.require(:recipe).permit(:title, :meal, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])
     end
 end

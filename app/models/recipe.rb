@@ -5,14 +5,21 @@ class Recipe < ApplicationRecord
     belongs_to :user
     
    # accepts_nested_attributes_for :ingredients
-   scope :cheese, -> { joins(:ingredients).where('name = "Cheese"') }
-   scope :dinner, -> { where(meal: "dinner") }
+   #scope :cheese, -> { joins(:ingredients).where('name = "Cheese"') }
+    scope :dinner, -> { where('meal = "dinner"') }
     
-      def ingredients_attributes=(ingredients_attributes)
-            ingredients_attributes.values.each do |ia|
-        @ingredient = Ingredient.find_or_create_by(name: :name)
-        self.recipe_ingredients.build(ingredient: @ingredient, quantity: ia[:recipe_ingredients][:quantity])
+
+     def ingredients_attributes=(ingredients_attributes)
+         self.ingredients = []
+            ingredients_attributes.values.each do |ingredients_attribute|
+                 if ingredients_attribute[:name] != ''
+        @ingredient = Ingredient.find_or_create_by(name: ingredients_attribute[:name])
+        self.ingredients << @ingredient
+     
         end
     end
   end
+  
+
  
+ end

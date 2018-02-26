@@ -1,5 +1,11 @@
 <%=render partial: "layouts/navbar" %>
-<h1> Recipes that include the ingredient of cheese: </h1>
-<% @recipes.cheese.each do |r| %>
-<li><%= r.title %></li>
-<%end%>
+<!--<h1> Recipes that include the ingredient of cheese: </h1>-->
+<!--<%# @recipes.cheese.each do |r| %>-->
+<!--<li><%#= r.title %></li>-->
+<!--<%#end%>-->
+
+<h1> Here are all the dinner recipes: </h1>
+    <% @recipes.dinner.each do |r| %>
+   <li> <%=r.title %></li>
+    <%end%>
+
