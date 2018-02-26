@@ -15,14 +15,6 @@ class User < ApplicationRecord
     end
   end
   
-  def add_recipe(recipe_id)
-      if recipe_ids.include?(recipe_id.to_i)
-        current = recipe_ingredients.find_by(recipe_id: recipe_id)
-        current
-      else 
-        recipe_ingredients.build(recipe_id: recipe_id)
-      end
-    end
 
         
 end
