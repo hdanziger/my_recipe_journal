@@ -30,5 +30,10 @@ RecipeIngredient.create([
     {recipe_id: 2, ingredient_id: 4, quantity: "4 cup"},
     {recipe_id: 2, ingredient_id: 5, quantity: "5 cup"}
     ])
+    
+Comment.create([
+    {recipe_id: 1, user_id: 1, text: "awesome!"},
+    {recipe_id: 2, user_id: 1, text: "this recipe rox !"},
+    ])
 
     

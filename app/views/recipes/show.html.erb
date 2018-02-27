@@ -18,6 +18,15 @@
 <p>Added by: <%= @recipe.user.email %></p>
 <%= link_to "Back to Recipes Home", recipes_path %>
 
+<h3> All Comments: </h3>
+<% @recipe.comments.each do |comment| %>
+<strong>Comment:</strong>
+<li><%=link_to comment.text, recipe_comment_path(@recipe.id, comment.id) %></li>
+<p>written by <%=comment.user.email %></p>
+<%end%>
+
+<p><a href="/recipes/<%= @recipe.id %>/comments/new"> Add a Comment </p>
+
  <br></br>
   <% if @recipe.user_id == current_user.id %>
     <%=button_to "Remove", recipe_path(@recipe), :method => "delete" %></li>

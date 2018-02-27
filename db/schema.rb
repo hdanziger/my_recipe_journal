@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20180201185653) do
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "user_id"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "recipe_id"

@@ -28,6 +28,8 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find_by(id: params[:id])
         @recipes = Recipe.all
+        @comments = Comment.all
+        @comment = Comment.find_by(id: params[:id])
     end
     
     def edit 
