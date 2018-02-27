@@ -10,13 +10,14 @@ class Recipe < ApplicationRecord
    #scope :cheese, -> { joins(:ingredients).where('name = "Cheese"') }
     scope :dinner, -> { where(:meal => "Dinner")}
     
-    def ingredients_attributes=(ingredients_attributes)
-          self.ingredients = []
-               ingredients_attributes.values.each do |ingredients_attribute|
-                  if ingredients_attribute[:name] != ''
-             @ingredient = Ingredient.find_or_create_by(ingredients_attribute)
-            self.ingredients << @ingredient
-        
+    def recipe_ingredients_attributes=(recipe_ingredients_attributes)
+        #binding.pry
+        recipe_ingredients_attributes.values.each do |recipe_ingredients_attribute|
+            if recipe_ingredients_attribute[:name] != ''
+                ingredient = Ingredient.find_or_create_by(name: recipe_ingredients_attribute[:name])
+                recipe_ingredient = self.recipe_ingredients.find_or_initialize_by(ingredient: ingredient)
+                quantity = recipe_ingredient.update_attributes(recipe_ingredients_attribute)
+    
             end
         end
     end
@@ -24,6 +25,5 @@ class Recipe < ApplicationRecord
     def uppercase_meal
          meal.capitalize! 
     end
-
 
  end

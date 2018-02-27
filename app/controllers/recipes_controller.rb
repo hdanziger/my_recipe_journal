@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     
     def new
         @recipe = Recipe.new
-       @recipe.ingredients.build
+       @recipe.recipe_ingredients.build
 
     end
     
@@ -19,8 +19,6 @@ class RecipesController < ApplicationController
          @recipe = Recipe.new(recipe_params)
         if @recipe.user = current_user
          if @recipe.save
-             @recipe.recipe_ingredients.update(quantity: params[:recipe][:recipe_ingredients][:quantity])
-             binding.pry
             redirect_to recipe_path(@recipe)
         else
             render :new
@@ -42,7 +40,7 @@ class RecipesController < ApplicationController
          @ingredient = Ingredient.find_by(id: params[:id])
 		if @recipe.user = current_user
 		    @recipe.update(recipe_params)
-		    @recipe.recipe_ingredients.update(quantity: params[:recipe][:recipe_ingredients][:quantity])
+		    
 		redirect_to recipe_path(@recipe)
 		else
 		    render :edit
@@ -58,12 +56,11 @@ class RecipesController < ApplicationController
        redirect_to recipe_path(@recipe)
     end
 end
-
     
     private
     
     def recipe_params
-        params.require(:recipe).permit(:title, :meal, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])# when ingredients attributes is in the params it wont add ingredient ids) 
+        params.require(:recipe).permit(:title, :meal, :user_id, :ingredient_ids => [], :recipe_ingredients_attributes => [:name, :quantity])
     end
     
 end

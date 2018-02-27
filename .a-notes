@@ -162,4 +162,4 @@ Ingredient.create(
 #          end
 #       dinners.join( ", ") 
 #   end
- 
+ #@recipe.recipe_ingredients.update(quantity: params[:recipe][:recipe_ingredients][:quantity])
