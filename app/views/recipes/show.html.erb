@@ -9,7 +9,7 @@
  
 <p><strong>Ingredients:</strong></p>
   <% @recipe.recipe_ingredients.each do |r_i| %>
-    <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %>
+    <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
     Quantity: <%= r_i.quantity %>
 </li><br>
 
