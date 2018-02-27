@@ -8,12 +8,12 @@ class Ingredient < ApplicationRecord
      
      
      def self.alphabetical
-      names = []
-      self.all.collect do |ingredient|
-       names << ingredient.name.capitalize
-         end
+        names = []
+        self.all.collect do |ingredient|
+        names << ingredient.name.capitalize
+        end
        names.each.sort_by {|name| name}.join( ", ") 
-   end
+     end
  
         
 end

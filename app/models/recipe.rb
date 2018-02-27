@@ -6,12 +6,9 @@ class Recipe < ApplicationRecord
     belongs_to :user
     before_validation :uppercase_meal
     
-   # accepts_nested_attributes_for :ingredients
-   #scope :cheese, -> { joins(:ingredients).where('name = "Cheese"') }
     scope :dinner, -> { where(:meal => "Dinner")}
     
     def recipe_ingredients_attributes=(recipe_ingredients_attributes)
-        #binding.pry
         recipe_ingredients_attributes.values.each do |recipe_ingredients_attribute|
             if recipe_ingredients_attribute[:name] != ''
                 ingredient = Ingredient.find_or_create_by(name: recipe_ingredients_attribute[:name])
@@ -26,4 +23,4 @@ class Recipe < ApplicationRecord
          meal.capitalize! 
     end
 
- end
+end

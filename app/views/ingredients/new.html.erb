@@ -4,7 +4,7 @@
 <h3> Here are the current ingredients: </h3>
 <% @recipe.recipe_ingredients.each do |r_i| %>
     <li><%=r_i.ingredient.name %></li>
-    <%end%>
+<%end%>
     
     
 <h3> Add Your Own: </h3>
@@ -12,9 +12,10 @@
 
 
 <hr>
-    <h3> And here are existing ingredients:</h3>
+
+<h3> And here are existing ingredients:</h3>
     <% Ingredient.all.each do |i| %> 
-         <li><%= i.name %></li>
+        <li><%= i.name %></li>
     <%end%>
 
     

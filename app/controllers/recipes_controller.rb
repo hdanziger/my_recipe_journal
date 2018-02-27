@@ -11,8 +11,7 @@ class RecipesController < ApplicationController
     
     def new
         @recipe = Recipe.new
-       @recipe.recipe_ingredients.build
-
+        @recipe.recipe_ingredients.build
     end
     
     def create
@@ -41,7 +40,7 @@ class RecipesController < ApplicationController
 		if @recipe.user = current_user
 		    @recipe.update(recipe_params)
 		    
-		redirect_to recipe_path(@recipe)
+		    redirect_to recipe_path(@recipe)
 		else
 		    render :edit
 		end
@@ -50,12 +49,12 @@ class RecipesController < ApplicationController
     def destroy
          @recipe = Recipe.find(params[:id])
         if @recipe.user = current_user
-        @recipe.delete
-        redirect_to recipes_path
-    else 
-       redirect_to recipe_path(@recipe)
+            @recipe.delete
+            redirect_to recipes_path
+         else 
+            redirect_to recipe_path(@recipe)
+        end
     end
-end
     
     private
     
