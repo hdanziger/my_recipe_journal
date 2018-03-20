@@ -1,12 +1,14 @@
 <%=render partial: "layouts/navbar" %>
 
+<a href="#" class="js-next" data-d="<%=@recipe.id%>"> Next Recipe</a>
+
    <% if notice %>
      <p> <%= notice %></p>
    <%end%>
-   
+
 <h3><strong>Recipe Title:</strong> <%= @recipe.title %> </h3>
  <h4>Meal: <%= @recipe.meal.capitalize %></h4>
- 
+
 <p><strong>Ingredients:</strong></p>
   <% @recipe.recipe_ingredients.each do |r_i| %>
     <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
@@ -33,4 +35,3 @@
     <%=link_to "Edit this Recipe", edit_recipe_path %>
      <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary">Create your own Ingredient for this Recipe</a></p>
     <%end%>
-
