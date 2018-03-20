@@ -2,11 +2,16 @@
 
 
 <h2> Recipes Home</h2>
-<ul>
+
 <% @recipes.each do |recipe| %>
 <li>
-    <%= link_to recipe.title, recipe_path(recipe) %>
+  <%= link_to recipe.title, recipe_path(recipe)%>
+
+  <button class="js-more" data-id="<%=recipe.id%>">More Info</button>
     </li>
+  <ul id="recipe-<%= recipe.title%>">
+  </ul>
+
 <%end%>
 
 <br>
@@ -19,5 +24,11 @@
 <br><br><br><br>
 
 <%=link_to "Click here for all dinner Recipes", scope_path %>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-more").on("click", function() {
+    console.log('hello')
+  })
+})
 
-
+</script>

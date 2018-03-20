@@ -2,9 +2,8 @@
 <h3> by <%= @user.email %></h3>
 <% if @user = current_user %>
 <% @user.recipes.each do |r| %>
-<li><%= link_to r.title, recipe_path(r) %> 
+<li><%= link_to r.title, recipe_path(r) %>
 <%=button_to "Remove", recipe_path(r), :method => "delete" %></li>
-
 <%end%>
 <%end%>
 <br>

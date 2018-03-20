@@ -12,10 +12,8 @@ p.groove {border-style: groove;}
 
 Signed in as <%= current_user.email %> &nbsp;
  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>&nbsp;&nbsp;
- &nbsp;<%= link_to "Recipes Home", recipes_path %> 
-  &nbsp; &nbsp;<%= link_to "See my Recipes", user_path(current_user) %>
+ &nbsp;<%= link_to "Recipes Home", recipes_path, class: "all_recipes" %>
+  &nbsp; &nbsp;<%= link_to "See my Recipes", user_path(current_user)%>
  <%end%>
  </p>
  </body>
-
-

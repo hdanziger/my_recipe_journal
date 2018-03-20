@@ -3,6 +3,10 @@ class RecipesController < ApplicationController
     def index
         @recipes = Recipe.all
         @ingredients = Ingredient.all
+        respond_to do |f|
+          f.html
+          f.json {render json: @recipes}
+        end
     end
 
     def scope
@@ -32,7 +36,7 @@ class RecipesController < ApplicationController
         @comment = Comment.find_by(id: params[:id])
         respond_to do |format|
           format.html {render :show }
-          format.json {render :@recipe }
+          format.json {render json: @recipe }
         end
     end
 

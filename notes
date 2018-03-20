@@ -1,0 +1,18 @@
+notes 
+!-- <button class="js-more" data-id="<%#= recipe.id%>">More Info</button>
+<ul id="comments for <%=#r.id %>">
+</ul>
+
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-more").on("click", function () {
+    var id = $(this).data("id");
+    $("/users/" + id + ".json", function(data) {
+      var recipe = data
+      var titleText = "<strong><%=#@user.username %></strong>";
+
+    })
+  })
+})
+</script> -->
