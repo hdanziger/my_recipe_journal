@@ -6,12 +6,12 @@
      <p> <%= notice %></p>
    <%end%>
 
-<h3><strong>Recipe Title:</strong> <%= @recipe.title %> </h3>
- <h4>Meal: <%= @recipe.meal.capitalize %></h4>
+<h3 class="recipeTitle"><strong>Recipe Title:</strong> <%= @recipe.title %> </h3>
+ <h4 class="recipeMeal">Meal: <%= @recipe.meal.capitalize %></h4>
 
 <p><strong>Ingredients:</strong></p>
   <% @recipe.recipe_ingredients.each do |r_i| %>
-    <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
+    <li class="recipeIngredient"><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
     Quantity: <%= r_i.quantity %>
 </li><br>
 
@@ -23,7 +23,7 @@
 <h3> All Comments: </h3>
 <% @recipe.comments.each do |comment| %>
 <strong>Comment:</strong>
-<li><%=link_to comment.text, recipe_comment_path(@recipe.id, comment.id) %></li>
+<li class="recipeComment"><%=link_to comment.text, recipe_comment_path(@recipe.id, comment.id) %></li>
 <p>written by <%=comment.user.email %></p>
 <%end%>
 
@@ -39,11 +39,24 @@
 
   <script type="text/javascript" charset="utf-8">
     $(function() {
+
       $(".js-next").on("click", function(data) {
         var id = data.currentTarget.dataset.id;
-          debugger
-        $.get("/recipes/" + id + ".json", function(data) {
+        var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+        $.get("/recipes/" + nextId + ".json", function(data) {
           var recipe = data;
+        $(".recipeTitle").text(recipe["title"])
+        $(".recipeMeal").text(recipe["meal"])
+        for(let i = 0; i < recipe.ingredients.length; i++) {
+          $(".recipeIngredient").text(recipe.ingredients[i].name)
+        }
+        //$(".recipeComment").text(recipe["comments"]["text"])
+        $(".js-next").attr("data-id", recipe["id"]);
+         debugger
+        // for(let i = 0; i < data.ingredients.length; i++) {
+        //   var ingredientText = "<li>" + data.ingredients[i].name + "</li>"
+// }
+          // $(".recipeTitle").text(recipe)
         })
       })
     })
