@@ -8,9 +8,10 @@
   <%= link_to recipe.title, recipe_path(recipe)%>
 
   <button class="js-more" data-id="<%=recipe.id%>">More Info</button>
-    </li>
-  <ul id="recipe-<%= recipe.id%>">
+
+  <ul id="recipe<%= recipe.id%>">
   </ul>
+  </li>
 
 <%end%>
 
@@ -25,14 +26,18 @@
 
 <%=link_to "Click here for all dinner Recipes", scope_path %>
 
+
+
 <script type="text/javascript" charset="utf-8">
 $(function() {
   $(".js-more").on("click", function() {
     var id = $(this).data("id");
     $.get("/recipes/" + id + ".json", function(data) {
       var recipe = data;
-      var titleText = "<p>" + recipe["title"] + "</p>" 
-      $("#recipe-" + id).html(titleText);
+      for(let i = 0; i < data.ingredients.length; i++) {
+        var ingredientText = "<li>" + data.ingredients[i].name + "</li>"
+        $("#recipe" + id).append(ingredientText)
+      };
     })
     })
   })
