@@ -4,11 +4,11 @@ $(function() {
     $.get("/recipes/" + id + ".json", function(data) {
       var recipe = data;
       for(let i = 0; i < recipe.ingredients.length; i++) {
-        var ingredientText = "<li>" + "<strong>" + "Ingredient: " + "</strong>" + data.ingredients[i].name + "</li>"
+        var ingredientText = "<li>" + "<strong>" + "Ingredient: " + "</strong>" + recipe.ingredients[i].name + "</li>"
         $("#recipe-" + id).append(ingredientText)
       };
         for(let i = 0; i < recipe.comments.length; i++) {
-        var commentText = "<li>" +  "<strong>" + "Comment: " + "</strong>" + data.comments[i].text + "</li>"
+        var commentText = "<li>" +  "<strong>" + "Comment: " + "</strong>" + recipe.comments[i].text + "</li>"
         $("#recipe-" + id).append(commentText)
       };
     })
@@ -16,6 +16,31 @@ $(function() {
   })
 
   // ----------------------------------------------------------
+
+  $(function() {
+    $("#new_comment").on("submit", function(e){
+      url = this.action
+      console.log(url)
+      data = {
+        'authenticity_token': $("input[name='authenticity_token']").val(),
+        'comment': {
+          'text': $("#comment_text").val()
+        }
+      };
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function(response) {
+        var $ul = $("div.comments ul")
+        $ul.append(response)
+        }
+      });
+
+      e.preventDefault();
+    })
+  })
 
 // $(function() {
 //   $("#new_comment").on("submit", (e) => {
