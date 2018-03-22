@@ -11,9 +11,9 @@ Fork and clone this repository, and then execute:
   $ rake db:migrate
 
 Then run:
-  $ rs
+  $ rails s
 Open up a new browser window and navigate to:
-  localhost:8080
+  localhost:3000
 
  Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/'hdanziger'/my_recipe_journal.
