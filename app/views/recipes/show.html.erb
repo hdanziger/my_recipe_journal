@@ -33,31 +33,9 @@
 
 
 
-<!-- <p><a href="/recipes/<%= @recipe.id %>/comments/new"> Add a Comment </p> -->
-
-
-
  <br></br>
   <% if @recipe.user_id == current_user.id %>
     <%=button_to "Remove", recipe_path(@recipe), :method => "delete" %></li>
     <%=link_to "Edit this Recipe", edit_recipe_path %>
      <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary">Create your own Ingredient for this Recipe</a></p>
     <%end%>
-
-  <!-- <script type="text/javascript" charset="utf-8">
-  $(function() {
-
-    $(".js-next").on("click", function(data) {
-      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-      $.get("/recipes/" + nextId + ".json", function(data) {
-        var recipe = data;
-        var id = recipe.id;
-      $(".recipeTitle").text(recipe["title"])
-      $(".recipeMeal").text(recipe["meal"])
-
-      $(".js-next").attr("data-id", recipe["id"]);
-
-      })
-    })
-  })
-</script> -->
