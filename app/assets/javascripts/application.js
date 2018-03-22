@@ -13,4 +13,4 @@
 //= require rails-ujs
 //= require jquery
 //= require recipes
-//= require comments
+//= require ingredients
