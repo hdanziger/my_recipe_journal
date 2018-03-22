@@ -32,8 +32,8 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find_by(id: params[:id])
         @recipes = Recipe.all
-        @comments = Comment.all
-        @comment = Comment.find_by(id: params[:id])
+        @comments = @recipe.comments
+        @comment = Comment.new
         respond_to do |format|
           format.html {render :show }
           format.json {render json: @recipe }

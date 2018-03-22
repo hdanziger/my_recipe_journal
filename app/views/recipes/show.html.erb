@@ -10,8 +10,9 @@
  <h4 class="recipeMeal">Meal: <%= @recipe.meal.capitalize %></h4>
 
 <p><strong>Ingredients:</strong></p>
-  <% @recipe.recipe_ingredients.each do |r_i| %>
-    <li class="recipeIngredient"><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
+  <li class="js-ingredient">
+    <% @recipe.recipe_ingredients.each do |r_i| %>
+    <%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
     Quantity: <%= r_i.quantity %>
 </li><br>
 
@@ -22,13 +23,42 @@
 
 <h3> All Comments: </h3>
 <% @recipe.comments.each do |comment| %>
-<strong>Comment:</strong>
+<ul>
 <li class="recipeComment"><%=link_to comment.text, recipe_comment_path(@recipe.id, comment.id) %></li>
 <p>written by <%=comment.user.email %></p>
+</ul>
 <%end%>
 
-<p><a href="/recipes/<%= @recipe.id %>/comments/new"> Add a Comment </p>
-  <p><%= render partial: "comments/form" %></p>
+
+  <%= form_for(@comment, :url => recipe_comments_path(@recipe)) do |f|  %>
+  <%= f.text_area :text %>
+  <p> <%= f.submit %></p>
+  <%end%>
+
+  <script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("#new_comment").on("submit", function(event){
+      debugger
+       $.ajax({
+      type: ($("input[name='_method']").val() || this.method),
+       url: url
+       data: $(this).serialize(),
+       success: function(response){
+         $("#comment_text").val("");
+         debugger
+         // var $ul = $("div.comments ul")
+         // $ul.append(response);
+
+       }
+     });
+      event.preventDefault();
+    })
+  })
+  </script>
+
+<!-- <p><a href="/recipes/<%= @recipe.id %>/comments/new"> Add a Comment </p> -->
+
+
 
  <br></br>
   <% if @recipe.user_id == current_user.id %>
@@ -41,22 +71,15 @@
     $(function() {
 
       $(".js-next").on("click", function(data) {
-        var id = data.currentTarget.dataset.id;
         var nextId = parseInt($(".js-next").attr("data-id")) + 1;
         $.get("/recipes/" + nextId + ".json", function(data) {
           var recipe = data;
+          var id = recipe.id;
         $(".recipeTitle").text(recipe["title"])
         $(".recipeMeal").text(recipe["meal"])
-        for(let i = 0; i < recipe.ingredients.length; i++) {
-          $(".recipeIngredient").text(recipe.ingredients[i].name)
-        }
-        //$(".recipeComment").text(recipe["comments"]["text"])
+
         $(".js-next").attr("data-id", recipe["id"]);
-         debugger
-        // for(let i = 0; i < data.ingredients.length; i++) {
-        //   var ingredientText = "<li>" + data.ingredients[i].name + "</li>"
-// }
-          // $(".recipeTitle").text(recipe)
+
         })
       })
     })

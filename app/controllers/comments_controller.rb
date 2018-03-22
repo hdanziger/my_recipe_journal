@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
          if @comment.user = current_user
         #binding.pry
             if @comment.save
-                render json: @recipe, status: 201
+                render 'comments/show', :layout => false
             else
                 render :new
              end

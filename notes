@@ -1,4 +1,4 @@
-notes 
+notes
 !-- <button class="js-more" data-id="<%#= recipe.id%>">More Info</button>
 <ul id="comments for <%=#r.id %>">
 </ul>
@@ -16,3 +16,29 @@ $(function() {
   })
 })
 </script> -->
+
+
+----------------
+all ingredient/comment ajax
+
+for(let i = 0; i < recipe.ingredients.length; i++) {
+  var ingredientText = "<li>" + recipe.ingredients[i].name + "</li>"
+  $("#recipe" + id).append(ingredientText)
+}
+//debugger
+
+//   var ingredients = recipe["ingredients"]
+//   var ingredientList = '';
+//   ingredients.forEach(function(ingredient) {
+//     ingredientList += '<li class="js-ingredient" data-id="' + ingredient["name"] + '">'+ '</li>';
+//   })
+//
+// $("#recipe" + id + "ingredients").html(ingredientList);
+
+//   // for(let i = 0; i < recipe.ingredients.length; i++) {
+//   //   $(".recipeIngredient").text(recipe.ingredients[i].name)
+//   // }
+$(".recipeComment").text(recipe["comments"]["text"])
+//debugger
+
+ // $(".recipeTitle").text(recipe)
