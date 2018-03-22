@@ -4,9 +4,12 @@ $(function() {
     $.get("/recipes/" + id + ".json", function(data) {
       var recipe = data;
       for(let i = 0; i < data.ingredients.length; i++) {
-        var ingredientText = "<li>" + data.ingredients[i].name + "</li>"
+        var ingredientText = "<li>" + "<strong>" + "Ingredient: " + "</strong>" + data.ingredients[i].name + "</li>"
         $("#recipe-" + id).append(ingredientText)
-
+      };
+        for(let i = 0; i < data.comments.length; i++) {
+        var commentText = "<li>" +  "<strong>" + "Comment: " + "</strong>" + data.comments[i].text + "</li>"
+        $("#recipe-" + id).append(commentText)
       };
     })
     })
