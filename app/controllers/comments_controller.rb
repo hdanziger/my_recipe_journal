@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
          if @comment.user = current_user
         #binding.pry
             if @comment.save
-                render 'comments/show', :layout => false
+                #render 'comments/show', :layout => false
+                redirect_to @recipe
             else
                 render :new
              end

@@ -1,7 +1,5 @@
 <%=render partial: "layouts/navbar" %>
 
-<a href="#" class="js-next" data-id="<%=@recipe.id%>"> Next Recipe</a>
-
    <% if notice %>
      <p> <%= notice %></p>
    <%end%>
@@ -35,26 +33,7 @@
   <p> <%= f.submit %></p>
   <%end%>
 
-  <script type="text/javascript" charset="utf-8">
-  $(function() {
-    $("#new_comment").on("submit", function(event){
-      debugger
-       $.ajax({
-      type: ($("input[name='_method']").val() || this.method),
-       url: url
-       data: $(this).serialize(),
-       success: function(response){
-         $("#comment_text").val("");
-         debugger
-         // var $ul = $("div.comments ul")
-         // $ul.append(response);
-
-       }
-     });
-      event.preventDefault();
-    })
-  })
-  </script>
+  
 
 <!-- <p><a href="/recipes/<%= @recipe.id %>/comments/new"> Add a Comment </p> -->
 
@@ -67,20 +46,20 @@
      <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary">Create your own Ingredient for this Recipe</a></p>
     <%end%>
 
-  <script type="text/javascript" charset="utf-8">
-    $(function() {
+  <!-- <script type="text/javascript" charset="utf-8">
+  $(function() {
 
-      $(".js-next").on("click", function(data) {
-        var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-        $.get("/recipes/" + nextId + ".json", function(data) {
-          var recipe = data;
-          var id = recipe.id;
-        $(".recipeTitle").text(recipe["title"])
-        $(".recipeMeal").text(recipe["meal"])
+    $(".js-next").on("click", function(data) {
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get("/recipes/" + nextId + ".json", function(data) {
+        var recipe = data;
+        var id = recipe.id;
+      $(".recipeTitle").text(recipe["title"])
+      $(".recipeMeal").text(recipe["meal"])
 
-        $(".js-next").attr("data-id", recipe["id"]);
+      $(".js-next").attr("data-id", recipe["id"]);
 
-        })
       })
     })
-</script>
+  })
+</script> -->

@@ -25,22 +25,3 @@
 <br><br><br><br>
 
 <%=link_to "Click here for all dinner Recipes", scope_path %>
-
-
-
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $(".js-more").on("click", function() {
-    var id = $(this).data("id");
-    $.get("/recipes/" + id + ".json", function(data) {
-      var recipe = data;
-      for(let i = 0; i < data.ingredients.length; i++) {
-        var ingredientText = "<li>" + data.ingredients[i].name + "</li>"
-        $("#recipe" + id).append(ingredientText)
-      };
-    })
-    })
-  })
-
-
-</script>
