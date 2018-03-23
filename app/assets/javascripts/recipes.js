@@ -25,10 +25,12 @@ $(function() {
           datatype: "json"
         }).done(function(data) {
            $("#comment_text").val("");
+
           var comment = data;
             let newComment= new Comment(comment)
             let commentHtml = newComment.formatShow()
             $('.comments').append(commentHtml)
+            console.log(comment.user)
           })
           e.preventDefault();
           return false
@@ -45,7 +47,9 @@ $(function() {
   Comment.prototype.formatShow = function() {
     let commentHtml = `
       <li>${this.text}</li>
-      <li>${this.user.email}</li>
+      written by: ${this.user.email}<br><br>
     `
     return commentHtml
   }
+
+  //`/recipes/${comment.recipe_id}/comments/${comment.id}`

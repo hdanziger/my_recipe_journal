@@ -21,13 +21,14 @@
 <ul class="comments">
   <% @recipe.comments.each do |comment| %>
   <li><%= comment.text %></li>
-    written by: <%= comment.user.email %></li><br>
+    written by: <%= comment.user.email %><br><br>
   <%end%>
 </ul>
 
 
 
   <%= form_for([@recipe, @comment]) do |f|  %>
+  <strong><%= f.label :text, "Add a Comment below:" %></strong><br>
   <%= f.text_area :text %>
   <p> <%= f.submit %></p>
   <%end%>
