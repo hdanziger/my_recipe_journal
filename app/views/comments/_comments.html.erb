@@ -1,8 +1,0 @@
-<ul>
-  <% @recipe.comments.each do |comment| %>
-  <li><%= comment.text %></li>
-    written by: <%= comment.user.email %></li><br>
-  <%end%>
-</ul>
-
-<!-- <li><%#= link_to comment.text, recipe_comment_path(comment) %> <br> -->

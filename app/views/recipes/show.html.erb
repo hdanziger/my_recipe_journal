@@ -18,12 +18,13 @@
 
 
 <h3> All Comments: </h3>
-<div class="comments">
-  <%=render 'comments/comments' %>
-</div>
+<ul>
+  <% @recipe.comments.each do |comment| %>
+  <li><%= comment.text %></li>
+    written by: <%= comment.user.email %></li><br>
+  <%end%>
+</ul>
 
-
-<!-- @comment, :url => recipe_comments_path(@recipe) -->
   <%= form_for([@recipe, @comment]) do |f|  %>
   <%= f.text_area :text %>
   <p> <%= f.submit %></p>

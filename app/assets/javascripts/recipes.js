@@ -17,30 +17,52 @@ $(function() {
 
   // ----------------------------------------------------------
 
-  $(function() {
+
+  $('form#new_comment').ready(function(e) {
     $("#new_comment").on("submit", function(e){
+        e.preventDefault();
+      debugger
       url = this.action
       console.log(url)
+      data = $(this).serialize();
+
       data = {
         'authenticity_token': $("input[name='authenticity_token']").val(),
         'comment': {
           'text': $("#comment_text").val()
-        }
-      };
+
 
       $.ajax({
-        type: "POST",
-        url: url,
-        data: data,
+        method: "POST",
+        url: this.action,
+        data = $(this).serialize(),
         success: function(response) {
-        var $ul = $("div.comments ul")
-        $ul.append(response)
-        }
-      });
 
-      e.preventDefault();
+        $('#comments').append(response)
+      }
+      };
+    }
+    };
+
     })
   })
+
+  function Comment(comment){
+    this.id = comment.id
+    this.text = comment.text
+    this.recipe = comment.recipe
+    this.user = comment.user
+  }
+
+  function Recipe(recipe){
+    this.id = recipe.id
+    this.title = recipe.title
+    this.meal = recipe.meal
+    this.user = recipe.user
+    this.comments = recipe.comments
+    this.ingredients = this.Ingredients
+  }
+
 
 // $(function() {
 //   $("#new_comment").on("submit", (e) => {

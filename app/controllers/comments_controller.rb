@@ -12,10 +12,12 @@ class CommentsController < ApplicationController
          if @comment.user = current_user
         #binding.pry
             if @comment.save
-                render partial: 'comments/comments', :layout => false
-                #redirect_to @recipe
+              respond_to do |f|
+                f.html {redirect_to @recipe}
+                f.json {render json: @recipe}
+              end
             else
-                render :new
+                redirect_to '/recipes'
              end
         end
     end
