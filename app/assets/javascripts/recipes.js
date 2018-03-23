@@ -15,22 +15,23 @@ $(function() {
     })
   })
 
-  // ----------------------------------------------------------
 
   $(function() {
-    $('form').on('submit', function(e) {
-        e.preventDefault();
+    $('#new_comment').on('submit', function(e) {
        $.ajax({
           type: "POST",
           url: this.action + ".json",
           data: $(this).serialize(),
           datatype: "json"
         }).done(function(data) {
+           $("#comment_text").val("");
           var comment = data;
             let newComment= new Comment(comment)
             let commentHtml = newComment.formatShow()
             $('.comments').append(commentHtml)
           })
+          e.preventDefault();
+          return false
           })
         })
 
@@ -38,6 +39,7 @@ $(function() {
     this.id = comment.id
     this.text = comment.text
     this.user = comment.user
+    this.recipe_id = comment.recipe_id
   }
 
   Comment.prototype.formatShow = function() {
