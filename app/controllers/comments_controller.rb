@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
             if @comment.save
               respond_to do |f|
                 f.html {redirect_to @recipe}
-                f.json {render json: @recipe}
+                f.json {render json: @comment}
               end
             else
                 redirect_to '/recipes'

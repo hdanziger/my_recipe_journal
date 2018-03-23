@@ -1,7 +1,0 @@
-{
-  "name": "my_recipe_journal",
-  "private": true,
-  "dependencies": {
-    "turbolinks": "^5.1.1"
-  }
-}

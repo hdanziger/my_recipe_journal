@@ -18,7 +18,7 @@
 
 
 <h3> All Comments: </h3>
-<ul>
+<ul class="comments">
   <% @recipe.comments.each do |comment| %>
   <li><%= comment.text %></li>
     written by: <%= comment.user.email %></li><br>

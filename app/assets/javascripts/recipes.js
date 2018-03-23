@@ -17,16 +17,33 @@ $(function() {
 
   // ----------------------------------------------------------
 
-  $(function () {
-    $('form').on('submit', function (e) {
+  $(function() {
+    $('form').on('submit', function(e) {
+        e.preventDefault();
        $.ajax({
           type: "POST",
-          url: this.action,
+          url: this.action + ".json",
           data: $(this).serialize(),
-          success: function () {
-            debugger
-        }
-      })
-        e.preventDefault();
-    })
-  })
+          datatype: "json"
+        }).done(function(data) {
+          var comment = data;
+            let newComment= new Comment(comment)
+            let commentHtml = newComment.formatShow()
+            $('.comments').append(commentHtml)
+          })
+          })
+        })
+
+  function Comment(comment) {
+    this.id = comment.id
+    this.text = comment.text
+    this.user = comment.user
+  }
+
+  Comment.prototype.formatShow = function() {
+    let commentHtml = `
+      <li>${this.text}</li>
+      <li>${this.user.email}</li>
+    `
+    return commentHtml
+  }
