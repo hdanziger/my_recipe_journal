@@ -18,20 +18,15 @@ $(function() {
   // ----------------------------------------------------------
 
   $(function () {
-
-          $('form').on('submit', function (e) {
-
-      e.preventDefault();
-      debugger
+    $('form').on('submit', function (e) {
        $.ajax({
           type: "POST",
           url: this.action,
           data: $(this).serialize(),
-
-           success: function () {
-
-          }
-        })
-
+          success: function () {
+            debugger
+        }
+      })
+        e.preventDefault();
     })
   })
