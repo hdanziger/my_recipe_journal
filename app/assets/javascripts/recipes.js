@@ -25,6 +25,7 @@ $(function() {
           datatype: "json"
         }).done(function(data) {
            $("#comment_text").val("");
+           debugger
 
           var comment = data;
             let newComment= new Comment(comment)
