@@ -5,7 +5,7 @@ $(() => {
 const bindClickHandlers = () => {
 $('.all_ingredients').on('click', (e) => {
   e.preventDefault()
-  history.pushState(null, null, "ingredients")
+  history.pushState("", "", "/ingredients")
   fetch(`/ingredients.json`)
   .then(res => res.json())
   .then(data => {

@@ -6,15 +6,15 @@
  <h4 class="recipeMeal">Meal: <%= @recipe.meal.capitalize %></h4>
 
 <p><strong>Ingredients:</strong></p>
-  <li class="js-ingredient">
-    <% @recipe.recipe_ingredients.each do |r_i| %>
-    <%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
-    Quantity: <%= r_i.quantity %>
-</li><br>
+    <ul class="js-ingredient">
+      <% @recipe.recipe_ingredients.each do |r_i| %>
+          <li><%=link_to r_i.ingredient.name, recipe_ingredient_path(@recipe, r_i.ingredient) %><br>
+                  Quantity: <%= r_i.quantity %></li>
+<br>
 
 <%end%>
 
-<p>Added by: <%= @recipe.user.email %></p>
+<p><strong>This recipe was added by:</strong> <%= @recipe.user.email %></p>
 
 
 <h3> All Comments: </h3>

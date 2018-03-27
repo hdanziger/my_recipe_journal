@@ -1,24 +1,21 @@
 <h2> Recipes Home</h2>
 
-<% @recipes.each do |recipe| %>
-<li>
-  <%= link_to recipe.title, recipe_path(recipe)%>
-
-  <button class="js-more" data-id="<%=recipe.id%>">More Info</button>
-
-  <ul id="recipe-<%= recipe.id%>">
-  </ul>
-  </li>
+    <% @recipes.each do |recipe| %>
+    <ul>
+      <li>
+        <%= link_to recipe.title, recipe_path(recipe)%>
+        <button class="js-more" data-id="<%=recipe.id%>">More Info</button></li>
+          <ul id="recipe-<%= recipe.id%>">
+          </ul>
+    </ul>
 
 <%end%>
 
 <br>
 
 <%=link_to "Add a New Recipe", new_recipe_path %><br>
-<%= link_to "See my Recipes", user_path(current_user) %><br>
-<br>
-<%#= link_to "Click here for all Ingredients in Alphabetical Order", alphabetical_path %>
+<%= link_to "See my Recipes", user_path(current_user) %><br><br>
 
-<br><br>
+<%#= link_to "Click here for all Ingredients in Alphabetical Order", alphabetical_path %>
 
 <%=link_to "Click here for all dinner Recipes", scope_path %>

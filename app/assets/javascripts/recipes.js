@@ -30,7 +30,6 @@ $(function() {
             let newComment= new Comment(comment)
             let commentHtml = newComment.formatShow()
             $('.comments').append(commentHtml)
-            console.log(comment.user)
           })
           e.preventDefault();
           return false
