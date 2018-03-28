@@ -3,18 +3,19 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
-$('.all_ingredients').on('click', (e) => {
+$('.all_ingredients').on('click', e => {
   e.preventDefault()
-  history.pushState("", "", "/ingredients")
+  history.pushState(null, null, "/ingredients")
   fetch(`/ingredients.json`)
   .then(res => res.json())
   .then(data => {
     $('#app-container').html('')
-    data.forEach((ingredient) => {
-      let newIngredient = new Ingredient(ingredient)
-      let ingredientHtml = newIngredient.formatIndex()
+    data.forEach(ingredient => {
+      const newIngredient = new Ingredient(ingredient)
+      const ingredientHtml = newIngredient.formatIndex()
       $('#app-container').append(ingredientHtml)
     })
+    renderIngredientsMeal();
   })
 
 })
@@ -27,8 +28,29 @@ function Ingredient(ingredient) {
 }
 
 Ingredient.prototype.formatIndex = function() {
-  let ingredientHtml = `
+  return `
     <li>${this.name}</li>
   `
-  return ingredientHtml
+}
+
+
+$(() => {
+  renderIngredientsMeal();
+})
+
+
+const renderIngredientsMeal = () => {
+  $('.js-meals').on('click', e => {
+    e.preventDefault();
+    $('#app-container').html('')
+    $.get(`/ingredients.json`, function(data) {
+      const ingredients = data.filter(ingredient => ingredient.recipes[0].meal === "Dinner")
+      ingredients.forEach(ingredient => {
+        const newIngredient = new Ingredient(ingredient)
+        const ingredientHtml = newIngredient.formatIndex()
+        $('#app-container').append(ingredientHtml)
+      })
+    })
+  })
+
 }

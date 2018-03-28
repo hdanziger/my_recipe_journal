@@ -10,8 +10,8 @@ $(function() {
         for(let i = 0; i < recipe.comments.length; i++) {
         var commentText = "<li>" +  "<strong>" + "Comment: " + "</strong>" + recipe.comments[i].text + "</li>"
         $("#recipe-" + id).append(commentText)
-      };
-    })
+        };
+      })
     })
   })
 
@@ -40,7 +40,7 @@ $(function() {
     this.id = comment.id
     this.text = comment.text
     this.user = comment.user
-    this.recipe_id = comment.recipe_id
+    this.recipeID = comment.recipe_id
   }
 
   Comment.prototype.formatShow = function() {
