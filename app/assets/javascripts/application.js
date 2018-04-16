@@ -14,3 +14,4 @@
 //= require jquery
 //= require recipes
 //= require ingredients
+//= require bootstrap-sprockets

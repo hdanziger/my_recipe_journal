@@ -1,6 +1,7 @@
 <h2> Recipes Home</h2>
 
     <% @recipes.each do |recipe| %>
+    <div class="container">
     <ul>
       <li>
         <%= link_to recipe.title, recipe_path(recipe)%>
@@ -8,6 +9,7 @@
           <ul id="recipe-<%= recipe.id%>">
           </ul>
     </ul>
+  </div>
 
 <%end%>
 
