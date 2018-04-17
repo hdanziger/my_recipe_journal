@@ -1,5 +1,5 @@
-
-<h2>Add a new ingredient to <%= @recipe.title %></h2>
+<div class="show">
+  <h2>Add a new ingredient to <%= @recipe.title %></h2>
 
 <h3> Here are the current ingredients: </h3>
 <% @recipe.recipe_ingredients.each do |r_i| %>
@@ -17,3 +17,4 @@
     <% Ingredient.all.each do |i| %>
         <li><%= i.name %></li>
     <%end%>
+</div>

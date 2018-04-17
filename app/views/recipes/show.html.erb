@@ -1,6 +1,7 @@
    <% if notice %>
      <p> <%= notice %></p>
    <%end%>
+   <div class= "show">
 
 <h3 class="recipeTitle"><strong>Recipe Title:</strong> <%= @recipe.title %> </h3>
  <h4 class="recipeMeal">Meal: <%= @recipe.meal.capitalize %></h4>
@@ -41,3 +42,4 @@
     <%=link_to "Edit this Recipe", edit_recipe_path %>
      <p><a href="/recipes/<%= @recipe.id %>/ingredients/new" class="btn btn-primary">Create your own Ingredient for this Recipe</a></p>
     <%end%>
+  </div>

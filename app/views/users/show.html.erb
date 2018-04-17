@@ -1,11 +1,14 @@
+<div class="show">
 <h2> My Recipe Page </h2>
 <h3> by <%= @user.email %></h3>
 <% if @user = current_user %>
-<% @user.recipes.each do |r| %>
-<li><%= link_to r.title, recipe_path(r) %>
-<%=button_to "Remove", recipe_path(r), :method => "delete" %></li>
-<%end%>
-<%end%>
+  <% @user.recipes.each do |r| %>
+          <li>
+            <%= link_to r.title, recipe_path(r) %>
+            <%=button_to "Remove", recipe_path(r), :method => "delete" %></li>
+    <%end%>
+  <%end%>
 <br>
 <%= link_to "Add a recipe", new_recipe_path %><br>
 <%= link_to "Back to Recipes Home", recipes_path %>
+</div>
