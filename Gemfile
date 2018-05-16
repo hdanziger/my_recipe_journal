@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.4'
 
 group :production do
   gem 'pg', '~> 0.21'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
